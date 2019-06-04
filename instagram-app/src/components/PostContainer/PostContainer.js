@@ -1,15 +1,12 @@
 import React from "react";
-import CommentSection from "../CommentSection/Comment";
+import CommentSection from "../CommentSection/CommentSection";
 import './PostContainer.css';
-import uuid from "uuid";
 
 function PostContainer(props) {
   const { posts } = props;
-  const comments = posts.comments.map(comment => {
-    return <CommentSection key={uuid()} comments={comment} />;
-  });
+
   return (
-    <div post-container>
+    <div className='post-container'>
      <div className='user-thumbnail'>
      <img src={posts.thumbnailUrl} alt="thumbnail" />
       <p>{posts.username}</p>
@@ -20,10 +17,8 @@ function PostContainer(props) {
         <i className="far fa-comment" />
       </p>
       <p>{posts.likes} likes</p>
-      {comments}
       <p>{posts.timestamp}</p>
-      <hr/>
-      <textarea type="text" rows="2" cols="10" placeholder='Add a comment...'></textarea>
+      <CommentSection handleAddComment={props.handleAddComment} postId={posts.id} comments={posts.comments} />
     </div>
   );
 }
