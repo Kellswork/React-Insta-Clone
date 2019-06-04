@@ -1,16 +1,18 @@
 import React from 'react';
+import uuid from 'uuid';
 import './App.css';
 import dummyData from './dummy-data.js';
 import PostContainer from './components/PostContainer/PostContainer';
+import SearchBar from './components/SearchBar/SearchBar';
 
 function App() {
   const data = dummyData.map(objectData => {
-      return <PostContainer posts = {objectData} />
+      return <PostContainer key={uuid()} posts = {objectData} />
   })
   return (
     <div className="App">
+      <SearchBar />
       {data}
-      <h1>You can do this KC</h1>
     </div>
   );
 }
