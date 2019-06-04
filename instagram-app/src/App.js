@@ -16,14 +16,11 @@ class App extends React.Component {
 
   componentDidMount() {
     this.setState({
-      data: dummyData.map(post => ({
+      data: JSON.parse(localStorage.getItem('post')) || dummyData.map(post => ({
         ...post,
         id: uuid(),
         display: true
       }))
-    });
-    this.setState({
-      data: JSON.parse(localStorage.getItem('post'))
     })   
   }
   handleAddComment = async (postId, commentText) => {
