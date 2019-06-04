@@ -16,12 +16,14 @@ class App extends React.Component {
 
   componentDidMount() {
     this.setState({
-      data: JSON.parse(localStorage.getItem('post')) || dummyData.map(post => ({
-        ...post,
-        id: uuid(),
-        display: true
-      }))
-    })   
+      data:
+        JSON.parse(localStorage.getItem("post")) ||
+        dummyData.map(post => ({
+          ...post,
+          id: uuid(),
+          display: true
+        }))
+    });
   }
   handleAddComment = async (postId, commentText) => {
     const newComment = {
@@ -41,11 +43,11 @@ class App extends React.Component {
         return post;
       })
     });
-   await localStorage.setItem('post', JSON.stringify(this.state.data));
+    await localStorage.setItem("post", JSON.stringify(this.state.data));
   };
 
- handleIncreaseLikes = async postId => {
-   await this.setState({
+  handleIncreaseLikes = async postId => {
+    await this.setState({
       data: this.state.data.map(post => {
         if (post.id === postId) {
           return { ...post, likes: post.likes + 1 };
@@ -53,7 +55,7 @@ class App extends React.Component {
         return post;
       })
     });
-    await localStorage.setItem('post', JSON.stringify(this.state.data));
+    await localStorage.setItem("post", JSON.stringify(this.state.data));
   };
 
   handleSearchBar = async event => {
@@ -66,7 +68,7 @@ class App extends React.Component {
         return { ...post, display: true };
       })
     });
-    await localStorage.setItem('post', JSON.stringify(this.state.data));
+    await localStorage.setItem("post", JSON.stringify(this.state.data));
   };
 
   render() {
@@ -91,4 +93,3 @@ class App extends React.Component {
 }
 
 export default App;
-
