@@ -3,8 +3,9 @@ import CommentSection from "../CommentSection/CommentSection";
 import './PostContainer.css';
 
 function PostContainer(props) {
-  const { posts } = props;
-
+    
+ const { posts } = props;
+ 
   return (
     <div className='post-container'>
      <div className='user-thumbnail'>
@@ -13,7 +14,7 @@ function PostContainer(props) {
      </div>
       <img src={posts.imageUrl} alt="upload" />
       <p>
-        <i className="far fa-heart" />
+        <i className="far fa-heart" onClick={() => props.handleIncreaseLikes(posts.id)}/>
         <i className="far fa-comment" />
       </p>
       <p>{posts.likes} likes</p>

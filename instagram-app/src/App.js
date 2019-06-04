@@ -22,13 +22,13 @@ class App extends React.Component {
       }))
     })
   }
-  handleAddComment = async (postId, commentText) => {
+  handleAddComment = (postId, commentText) => {
     const newComment = {
       username: "Kells",
       text: commentText
     };
    
-    await this.setState({
+     this.setState({
       ...this.state,
       data: this.state.data.map(post => {
         console.log(post.id,  postId);
@@ -44,9 +44,21 @@ class App extends React.Component {
 
   }
 
+  handleIncreaseLikes = (postId) => {
+    this.setState({
+      data: this.state.data.map(post => {
+        if(post.id === postId) { 
+          return {...post, likes: post.likes + 1}
+        };
+        return post;
+      })
+    })
+  }
+
+
   render () {
     const data = this.state.data.map(objectData => {
-      return <PostContainer handleAddComment={this.handleAddComment} key={objectData.id} posts={objectData} />
+      return <PostContainer handleAddComment={this.handleAddComment} handleIncreaseLikes={this.handleIncreaseLikes} key={objectData.id} posts={objectData} />
   })
 
   return (
