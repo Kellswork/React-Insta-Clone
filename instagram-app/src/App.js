@@ -22,17 +22,19 @@ class App extends React.Component {
         display: true
       }))
     });
+    this.setState({
+      data: JSON.parse(localStorage.getItem('post'))
+    })   
   }
-  handleAddComment = (postId, commentText) => {
+  handleAddComment = async (postId, commentText) => {
     const newComment = {
       username: "Kells",
       text: commentText
     };
 
-    this.setState({
+    await this.setState({
       ...this.state,
       data: this.state.data.map(post => {
-        console.log(post.id, postId);
         if (post.id === postId) {
           return {
             ...post,
@@ -42,31 +44,32 @@ class App extends React.Component {
         return post;
       })
     });
+   await localStorage.setItem('post', JSON.stringify(this.state.data));
   };
 
-  handleIncreaseLikes = postId => {
-    this.setState({
+ handleIncreaseLikes = async postId => {
+   await this.setState({
       data: this.state.data.map(post => {
-        console.log(post);
         if (post.id === postId) {
           return { ...post, likes: post.likes + 1 };
         }
         return post;
       })
     });
+    await localStorage.setItem('post', JSON.stringify(this.state.data));
   };
 
-  handleSearchBar = event => {
+  handleSearchBar = async event => {
     this.setState({
       ...this.state,
       data: this.state.data.map(post => {
         if (!post.username.includes(event.target.value)) {
-          console.log(post);
           return { ...post, display: false };
         }
         return { ...post, display: true };
       })
     });
+    await localStorage.setItem('post', JSON.stringify(this.state.data));
   };
 
   render() {
@@ -91,3 +94,4 @@ class App extends React.Component {
 }
 
 export default App;
+
