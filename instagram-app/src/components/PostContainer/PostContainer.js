@@ -5,9 +5,9 @@ import './PostContainer.css';
 function PostContainer(props) {
     
  const { posts } = props;
- 
+ const showPost = {display: posts.display ? 'block' : 'none'};
   return (
-    <div className='post-container'>
+    <div className='post-container' style={showPost}>
      <div className='user-thumbnail'>
      <img src={posts.thumbnailUrl} alt="thumbnail" />
       <p>{posts.username}</p>

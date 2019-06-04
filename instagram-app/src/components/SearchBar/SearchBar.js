@@ -1,7 +1,7 @@
 import React from "react";
 import "./SearchBar.css";
 
-function SearchBar() {
+function SearchBar(props) {
   return (
     <div className='nav-container'>
       <div className='logo'>
@@ -9,7 +9,7 @@ function SearchBar() {
         <p>Instagram</p>
       </div>
       <div className='search'>
-        <input type="text" placeholder='Search'/>
+        <input type="text" placeholder='Search' onChange={(event) => props.handleSearchBar(event)}/>
         <i className="fas fa-search" />
       </div>
       <div className='icons'>
