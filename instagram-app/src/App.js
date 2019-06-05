@@ -2,8 +2,7 @@ import React from "react";
 import uuid from "uuid";
 import "./App.css";
 import dummyData from "./dummy-data.js";
-import PostContainer from "./components/PostContainer/PostContainer";
-import SearchBar from "./components/SearchBar/SearchBar";
+import PostsPage from "./components/PostContainer/PostsPage";
 
 class App extends React.Component {
   constructor() {
@@ -72,22 +71,11 @@ class App extends React.Component {
   };
 
   render() {
-    const data = this.state.data.map(objectData => {
-      return (
-        <PostContainer
-          handleAddComment={this.handleAddComment}
-          handleIncreaseLikes={this.handleIncreaseLikes}
-          key={objectData.id}
-          posts={objectData}
-        />
-      );
-    });
 
     return (
-      <div className="App">
-        <SearchBar handleSearchBar={this.handleSearchBar} />
-        {data}
-      </div>
+      <PostsPage data={this.state.data}
+        handleIncreaseLikes={this.handleIncreaseLikes}
+         handleAddComment={this.handleAddComment} />
     );
   }
 }
