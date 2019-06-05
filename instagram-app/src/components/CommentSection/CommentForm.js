@@ -3,7 +3,7 @@ import "./CommentSection.css";
 
 function CommentForm(props) {
   return (
-    <form onSubmit={event => props.addNewComment(event)}>
+    <form method="post" onSubmit={event => props.addNewComment(event)}>
       <input
         type="text"
         placeholder="Add a comment..."
