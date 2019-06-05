@@ -1,6 +1,6 @@
 import React from "react";
 
-const withAuthenticate = Component => Login => {
+const withAuthenticate = (Component,Login) => {
   return class extends React.Component {
     constructor(props) {
       super(props);
