@@ -3,6 +3,8 @@ import uuid from "uuid";
 import "./App.css";
 import dummyData from "./dummy-data.js";
 import PostsPage from "./components/PostContainer/PostsPage";
+import withAuthenticate from './components/authentication/withAuthenticate';
+import Login from './components/Login/Login';
 
 class App extends React.Component {
   constructor() {
@@ -71,11 +73,12 @@ class App extends React.Component {
   };
 
   render() {
-
+   const ComponentFromWithAuthenticate = withAuthenticate(PostsPage);
     return (
-      <PostsPage data={this.state.data}
-        handleIncreaseLikes={this.handleIncreaseLikes}
-         handleAddComment={this.handleAddComment} />
+      // <ComponentFromWithAuthenticate data={this.state.data}
+      //   handleIncreaseLikes={this.handleIncreaseLikes}
+      //    handleAddComment={this.handleAddComment} handleSearchBar={this.handleSearchBar} />
+      <Login />
     );
   }
 }
