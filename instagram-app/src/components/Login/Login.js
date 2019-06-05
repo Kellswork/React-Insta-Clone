@@ -3,8 +3,8 @@ import { FormGroup, Input, Label, Button } from "reactstrap";
 import "./Login.css";
 
 class Login extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             username: '',
             password: ''
@@ -17,10 +17,10 @@ class Login extends React.Component {
         })
     }
 
-    handleSubmitForm = async (event) => {
+    login = async (event) => {
         event.preventDefault();
-        localStorage.setItem('username', this.state.username);
-       await window.location.reload();
+       await localStorage.setItem('username', this.state.username);
+        window.location.reload();
 
     }
 
@@ -40,7 +40,7 @@ class Login extends React.Component {
             <Input type="password" name="password" id="password" onChange={(event) => this.handleChange(event)}/>
           </FormGroup>
 
-          <Button type="submit" onClick={(event) => this.handleSubmitForm(event)}>Login</Button>
+          <Button type="submit" onClick={(event) => this.login(event)}>Login</Button>
         </form>
       </div>
     );

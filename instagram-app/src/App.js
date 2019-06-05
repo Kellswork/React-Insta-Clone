@@ -28,7 +28,7 @@ class App extends React.Component {
   }
   handleAddComment = async (postId, commentText) => {
     const newComment = {
-      username: "Kells",
+      username: localStorage.getItem('username'),
       text: commentText
     };
 
@@ -73,14 +73,13 @@ class App extends React.Component {
   };
 
   render() {
-   const ComponentFromWithAuthenticate = withAuthenticate(PostsPage);
     return (
-      // <ComponentFromWithAuthenticate data={this.state.data}
-      //   handleIncreaseLikes={this.handleIncreaseLikes}
-      //    handleAddComment={this.handleAddComment} handleSearchBar={this.handleSearchBar} />
-      <Login />
+      <ComponentFromWithAuthenticate data={this.state.data}
+        handleIncreaseLikes={this.handleIncreaseLikes}
+         handleAddComment={this.handleAddComment} handleSearchBar={this.handleSearchBar} />
     );
   }
 }
+const ComponentFromWithAuthenticate = withAuthenticate(PostsPage)(Login);
 
 export default App;
