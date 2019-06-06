@@ -1,5 +1,4 @@
 import React from "react";
-import { FormGroup, Input, Label, Button } from "reactstrap";
 import "./Login.css";
 
 class Login extends React.Component {
@@ -30,17 +29,17 @@ class Login extends React.Component {
       <div className="form-container">
         <form>
           <h1>LOGIN</h1>
-          <FormGroup>
-            <Label htmlFor="username">Username</Label>
-            <Input type="text" name="username" id="username" onChange={(event) => this.handleChange(event)} />
-          </FormGroup>
+          <input-group>
+            <label htmlFor="username">Username</label>
+            <input type="text" name="username" id="username" onChange={(event) => this.handleChange(event)} />
+          </input-group>
 
-          <FormGroup>
-            <Label htmlFor="password">Password</Label>
-            <Input type="password" name="password" id="password" onChange={(event) => this.handleChange(event)}/>
-          </FormGroup>
+          <input-group>
+            <label htmlFor="password">Password</label>
+            <input type="password" name="password" id="password" onChange={(event) => this.handleChange(event)}/>
+          </input-group>
 
-          <Button type="submit" onClick={(event) => this.login(event)}>Login</Button>
+          <button type="submit" onClick={(event) => this.login(event)}>Login</button>
         </form>
       </div>
     );

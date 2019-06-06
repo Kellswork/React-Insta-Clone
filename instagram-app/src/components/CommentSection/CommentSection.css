@@ -1,9 +1,0 @@
-.comments {
-    display: flex;
-}
-
-.comments .username {
-    font-weight: bold;
-    padding-right: 4px;
-    padding-bottom: 10px;
-}
