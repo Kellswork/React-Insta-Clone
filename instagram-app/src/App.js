@@ -73,6 +73,7 @@ class App extends React.Component {
   };
 
   render() {
+    
     return (
       <ComponentFromWithAuthenticate data={this.state.data}
         handleIncreaseLikes={this.handleIncreaseLikes}
